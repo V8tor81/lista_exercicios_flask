@@ -5,7 +5,7 @@
 {% block content %}
 <div class="container mt-4">
     <h2>Excluir Médico</h2>
-    <p>Tem certeza que deseja excluir <strong>{{ medico.nome_completo }}</strong>?</p>
+
 
     <form action="{{ url_for('excluir_medico_view', id=medico.id) }}" method="post" novalidate>
         {{ form.hidden_tag() }}

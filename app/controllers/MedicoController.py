@@ -11,7 +11,7 @@ def salvar_medico(form):
     )
     db.session.add(novo_medico)
     db.session.commit()
-    flash("Médico cadastrado com sucesso!", "success")
+    flash("Médico cadastrado com sucesso!")
 
 
 def listar_medicos():
@@ -27,11 +27,11 @@ def atualizar_medico(medico, form):
     medico.especialidade = form.especialidade.data
     medico.email = form.email.data
     db.session.commit()
-    flash("Médico atualizado com sucesso!", "success")
+    flash("Médico atualizado com sucesso!")
 
 def excluir_medico(medico):
     db.session.delete(medico)
     db.session.commit()
-    flash("Médico excluído com sucesso!", "success")
+    flash("Médico excluído com sucesso!")
 
 

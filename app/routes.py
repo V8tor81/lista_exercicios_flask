@@ -52,19 +52,15 @@ def editar_medico(id):
     return render_template('medico_form.html', form=form)
 
 
-@app.route('/medicos/<int:id>/excluir', methods=['GET', 'POST'])
+@app.route('/medicos/<int:id>/excluir', methods=['GET'])
 def excluir_medico_view(id):
     medico = mc.buscar_medico_por_id(id)
     if not medico:
         flash('Médico não encontrado.')
         return redirect(url_for('listar_medicos'))
-
-    if request.method == 'POST':
+    else:
         mc.excluir_medico(medico)
         flash('Médico excluído com sucesso.')
         return redirect(url_for('listar_medicos'))
-
-    return render_template('medico_excluir.html', medico=medico)
-
 
 
