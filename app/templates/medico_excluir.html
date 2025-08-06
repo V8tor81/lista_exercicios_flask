@@ -7,9 +7,10 @@
     <h2>Excluir Médico</h2>
     <p>Tem certeza que deseja excluir <strong>{{ medico.nome_completo }}</strong>?</p>
 
-    <form method="POST">
+    <form action="{{ url_for('excluir_medico_view', id=medico.id) }}" method="post" novalidate>
+        {{ form.hidden_tag() }}
         <button type="submit" class="btn btn-danger">Confirmar Exclusão</button>
-        <a href="{{ url_for('detalhes_medico', id=medico.id) }}" class="btn btn-secondary">Cancelar</a>
+       
     </form>
 </div>
 {% endblock %}

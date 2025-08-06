@@ -1,15 +1,13 @@
 from app import db
-from app import flash
-from app.models.medicos import Medico
+from flask import flash
+from app.models.medico import Medico
 
 
 def salvar_medico(form):
     novo_medico = Medico(
         nome_completo=form.nome_completo.data,
-        username=form.username.data,
         crm=form.crm.data,
-        especialidade=form.especialidade.data,
-        email=form.email.data
+        especialidade=form.especialidade.data
     )
     db.session.add(novo_medico)
     db.session.commit()

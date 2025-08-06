@@ -10,19 +10,12 @@
 
     <form method="POST">
         {{ form.hidden_tag() }}
+        
 
         <div class="mb-3">
             {{ form.nome_completo.label(class="form-label") }}
             {{ form.nome_completo(class="form-control") }}
             {% for error in form.nome_completo.errors %}
-                <div class="text-danger small">{{ error }}</div>
-            {% endfor %}
-        </div>
-
-        <div class="mb-3">
-            {{ form.username.label(class="form-label") }}
-            {{ form.username(class="form-control") }}
-            {% for error in form.username.errors %}
                 <div class="text-danger small">{{ error }}</div>
             {% endfor %}
         </div>
@@ -39,14 +32,6 @@
             {{ form.especialidade.label(class="form-label") }}
             {{ form.especialidade(class="form-select") }}
             {% for error in form.especialidade.errors %}
-                <div class="text-danger small">{{ error }}</div>
-            {% endfor %}
-        </div>
-
-        <div class="mb-3">
-            {{ form.email.label(class="form-label") }}
-            {{ form.email(class="form-control") }}
-            {% for error in form.email.errors %}
                 <div class="text-danger small">{{ error }}</div>
             {% endfor %}
         </div>

@@ -12,7 +12,7 @@
         <li class="list-group-item"><strong>Especialidade:</strong> {{ medico.especialidade }}</li>
         <li class="list-group-item"><strong>Email:</strong> {{ medico.email }}</li>
     </ul>
-    <a href="{{ url_for('editar_medico', id=medico.id) }}" class="btn btn-warning mt-3">Editar</a>
+    <a href="{{ url_for('novo', id=medico.id) }}" class="btn btn-warning mt-3">Editar</a>
     <a href="{{ url_for('excluir_medico_view', id=medico.id) }}" class="btn btn-danger mt-3">Excluir</a>
     <a href="{{ url_for('listar_medicos') }}" class="btn btn-secondary mt-3">Voltar</a>
 </div>
