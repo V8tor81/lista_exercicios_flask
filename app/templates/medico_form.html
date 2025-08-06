@@ -1,39 +1,60 @@
-{% extends "base.html" %}
+{% extends 'base.html' %}
 
-{% block conteudo %}
-<h1>Cadastro</h1>
-<form action="cadastrar" method="post" novalidate>
-    {{ form.hidden_tag() }}
-    <p>
-        {{ form.nome_completo.label }}<br>
-        {{ form.nome_completo(size=32) }}
-    </p>
-    <p>
-        {{ form.username.label }}<br>
-        {{ form.username(size=32) }}
-    </p>
-    <p>
-        {{ form.crm.label }}<br>
-        {{ form.crm(size=32) }} 
-    </p>
-    <p>
-        {{ form.especialidade.label }}<br>
-        {{ form.aspecialidade(size=32) }} 
-    </p>
-    <p>
-        {{ form.email.label }}<br>
-        {{ form.email(size=32) }} 
-    </p>
-    <p>
-        {{ form.submit() }} 
-        {{ form.submit.label }}
-    </p>
-    <p>
-        {{ form.botao_cadastrar() }}
-    </p>
-</form>
+{% block title %}
+    {{ 'Editar Médico' if form.nome_completo.data else 'Cadastrar Médico' }}
 {% endblock %}
 
+{% block content %}
+<div class="container mt-4">
+    <h2>{{ 'Editar Médico' if form.nome_completo.data else 'Cadastrar Novo Médico' }}</h2>
 
+    <form method="POST">
+        {{ form.hidden_tag() }}
 
-    
+        <div class="mb-3">
+            {{ form.nome_completo.label(class="form-label") }}
+            {{ form.nome_completo(class="form-control") }}
+            {% for error in form.nome_completo.errors %}
+                <div class="text-danger small">{{ error }}</div>
+            {% endfor %}
+        </div>
+
+        <div class="mb-3">
+            {{ form.username.label(class="form-label") }}
+            {{ form.username(class="form-control") }}
+            {% for error in form.username.errors %}
+                <div class="text-danger small">{{ error }}</div>
+            {% endfor %}
+        </div>
+
+        <div class="mb-3">
+            {{ form.crm.label(class="form-label") }}
+            {{ form.crm(class="form-control") }}
+            {% for error in form.crm.errors %}
+                <div class="text-danger small">{{ error }}</div>
+            {% endfor %}
+        </div>
+
+        <div class="mb-3">
+            {{ form.especialidade.label(class="form-label") }}
+            {{ form.especialidade(class="form-select") }}
+            {% for error in form.especialidade.errors %}
+                <div class="text-danger small">{{ error }}</div>
+            {% endfor %}
+        </div>
+
+        <div class="mb-3">
+            {{ form.email.label(class="form-label") }}
+            {{ form.email(class="form-control") }}
+            {% for error in form.email.errors %}
+                <div class="text-danger small">{{ error }}</div>
+            {% endfor %}
+        </div>
+
+        <button type="submit" class="btn btn-success">
+            {{ 'Salvar Alterações' if form.nome_completo.data else form.submit.label.text }}
+        </button>
+        <a href="{{ url_for('listar_medicos') }}" class="btn btn-secondary">Cancelar</a>
+    </form>
+</div>
+{% endblock %}
